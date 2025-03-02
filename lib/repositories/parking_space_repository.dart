@@ -1,70 +1,46 @@
-import 'dart:io';
 import '../models/parking_space.dart';
 
 
 class ParkingSpaceRepository {
   final List<ParkingSpace> _parkingSpaces = [];
 
-  void add() {
-    stdout.write('Ange adress för parkeringsplats: ');
-    String? adress = stdin.readLineSync();
-
-    stdout.write('Ange pris per timme: ');
-    String? priceInput = stdin.readLineSync();
-    int? pricePerHour = int.tryParse(priceInput ?? '');
-
-    if (adress == null || pricePerHour == null) {
-      stdout.writeln('Felaktig inmatning. Parkeringsplatsen skapades inte.');
-      return;
-    }
-
-    _parkingSpaces.add(ParkingSpace(adress: adress, pricePerHpour: pricePerHour));
-    stdout.writeln('Parkeringsplats $adress har lagts till.');
+  // Add a new parking space
+  void add(String adress, int pricePerHour) {
+    _parkingSpaces.add(ParkingSpace(adress: adress, pricePerHour: pricePerHour));
   }
 
-  void showAll() {
-    if (_parkingSpaces.isEmpty) {
-      stdout.writeln('Inga parkeringsplatser hittades.');
-    } else {
-      stdout.writeln('Lista över alla parkeringsplatser:');
-      for (var space in _parkingSpaces) {
-        stdout.writeln('ID: ${space.id}, Adress: ${space.adress}, Pris per timme: ${space.pricePerHpour} kr');
-      }
-    }
+  // Get all parking spaces
+  List<ParkingSpace> getAll() {
+    return _parkingSpaces;
   }
 
-  bool update(int id) {
+  // Get a specific parking space by ID
+  ParkingSpace? getParkingSpaceById(int id) {
+  return _parkingSpaces.isNotEmpty && _parkingSpaces.any((p) => p.id == id)
+      ? _parkingSpaces.firstWhere((p) => p.id == id)
+      : null;
+}
+
+
+  // Update a parking space by ID
+  bool update(int id, {String? newAdress, int? newPrice}) {
     final spaceIndex = _parkingSpaces.indexWhere((p) => p.id == id);
-    if (spaceIndex == -1) {
-      stdout.writeln('Parkeringsplats med id $id hittades inte.');
-      return false;
-    }
-
-    stdout.write('Ange ny adress (tryck enter för att behålla den gamla): ');
-    String? newAdress = stdin.readLineSync();
-    stdout.write('Ange nytt pris per timme (tryck enter för att behålla det gamla): ');
-    String? newPriceInput = stdin.readLineSync();
-    int? newPrice = int.tryParse(newPriceInput ?? '');
+    if (spaceIndex == -1) return false;
 
     final currentSpace = _parkingSpaces[spaceIndex];
     _parkingSpaces[spaceIndex] = ParkingSpace(
       adress: newAdress?.isNotEmpty == true ? newAdress! : currentSpace.adress,
-      pricePerHpour: newPrice ?? currentSpace.pricePerHpour,
+      pricePerHour: newPrice ?? currentSpace.pricePerHour,
     );
-
-    stdout.writeln('Parkeringsplatsen har uppdaterats.');
     return true;
   }
 
-bool remove(int id) {
-  final space = _parkingSpaces.firstWhere((p) => p.id == id, orElse: () => ParkingSpace(adress: '', pricePerHpour: 0));
-  if (space.adress.isNotEmpty) {
-    _parkingSpaces.remove(space);
-    stdout.writeln('Parkeringsplatsen ${space.adress} har tagits bort.');
+  // Remove a parking space by ID
+  bool remove(int id) {
+    final spaceIndex = _parkingSpaces.indexWhere((p) => p.id == id);
+    if (spaceIndex == -1) return false;
+
+    _parkingSpaces.removeAt(spaceIndex);
     return true;
   }
-  stdout.writeln('Parkeringsplats med id $id hittades inte.');
-  return false;
-}
-
 }
