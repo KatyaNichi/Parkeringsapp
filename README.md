@@ -4,4 +4,4 @@
 
 Andra uppgiften
 
-[Watch the demo video](assets/demo.mov)
+Demo video is in assets
