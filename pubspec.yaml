@@ -1,20 +1,17 @@
 name: parkeringsapp
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: Parkeringsapp Client
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
 
 environment:
-  sdk: ^3.5.0
-  flutter: ">=1.17.0"
+  sdk: ^3.7.0
 
 dependencies:
-  flutter:
-    sdk: flutter
+  http: ^1.2.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^4.0.0
+  lints: ^5.0.0
+  test: ^1.24.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,4 +1,18 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lints/recommended.yaml
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    - avoid_empty_else
+    - avoid_relative_lib_imports
+    - avoid_print
+    - provide_deprecation_message
+    - unnecessary_brace_in_string_interps
+    - use_rethrow_when_possible

@@ -1,0 +1,1 @@
+{"vehicles":[{"id":1,"type":"Bil","registrationNumber":999,"ownerId":1},{"id":2,"type":"Buss","registrationNumber":333,"ownerId":1},{"id":3,"type":"Lastbil","registrationNumber":222,"ownerId":3}],"nextId":4}
