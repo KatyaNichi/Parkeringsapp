@@ -1,1 +1,1 @@
-{"parkings":[{"id":1,"fordon":"2","parkingPlace":"1","startTime":"22:13","endTime":"23:22"},{"id":2,"fordon":"3","parkingPlace":"2","startTime":"10:00","endTime":null}],"nextId":3}
+{"parkings":[{"id":1,"fordon":"2","parkingPlace":"1","startTime":"22:13","endTime":"23:22"},{"id":2,"fordon":"3","parkingPlace":"2","startTime":"10:00","endTime":"12:00"},{"id":3,"fordon":"2","parkingPlace":"2","startTime":"23:10","endTime":"23:50"},{"id":4,"fordon":"2","parkingPlace":"1","startTime":"11:00","endTime":null}],"nextId":5}
